@@ -1,4 +1,4 @@
-module github.com/pvainio/scd30
+module github.com/mwmg/scd30
 
 go 1.17
 
