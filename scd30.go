@@ -90,6 +90,14 @@ func (dev SCD30) SetTemperatureOffset(offset uint16) error {
 	return dev.sendCommandArg(0x5403, offset)
 }
 
+// SetAltitudeCompensation sets altitude, i.e. height over sea level, to compensate deviations due to altitude
+// Value is in [m] above 0.
+func (dev SCD30) SetAltitudeCompensation(altitude uint16) error {
+	mutex.Lock()
+	defer mutex.Unlock()
+	return dev.sendCommandArg(0x5102, altitude)
+}
+
 // GetMeasurement returns ready measurement.  HasMeasurement should be
 // used first to check if there is one.
 func (dev SCD30) GetMeasurement() (*Measurement, error) {
